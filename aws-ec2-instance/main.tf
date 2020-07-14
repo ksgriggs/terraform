@@ -21,7 +21,7 @@ resource "aws_instance" "server" {
     instance_type   = var.aws_instance_type
     key_name        = var.key_name
     security_groups = var.aws_security_group
-    user_data = var.user_data
+    user_data = file(var.user_data)
 
     tags = var.tags
 }
