@@ -17,7 +17,7 @@ data "aws_ami" "search" {
 }
 
 resource "aws_instance" "server" {
-    ami             = lookup(var.aws_amis, var.aws_region)
+    ami             = data.aws_ami.search.id
     instance_type   = var.aws_instance_type
     key_name        = var.key_name
     security_groups = var.aws_security_group
