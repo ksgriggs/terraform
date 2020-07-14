@@ -3,16 +3,6 @@ variable "aws_region" {
     default = "us-east-1"
 }
 
-variable "aws_amis" {
-    description = "Add regions and AMI as needed."
-    default = {
-        us-east-1 = "ami-08f3d892de259504d"
-#        us-east-2 = "ami-#"
-#        us-west-1 = "ami-#"
-#        us-west-2 = "ami-#"
-    }
-}
-
 variable "aws_security_group" {
     default = ["Web-DMZ"]
 }
