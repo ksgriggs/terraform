@@ -7,11 +7,6 @@ variable "key_name" {
   type        = string
 }
 
-variable "user_data" {
-    description = "File to run after instance creation."
-    type        = string
-}
-
 provider "aws" {
   profile = "default"
   region  =  "us-east-1"
@@ -36,10 +31,6 @@ resource "aws_default_vpc" "default" {}
 # Use default subnet
 resource "aws_default_subnet" "default" {
   availability_zone = "us-east-1a"
-
-  tags = {
-    "Terraform" : "true"
-  }
 }
 
 resource "aws_security_group" "tf_sg" {
@@ -73,7 +64,8 @@ resource "aws_instance" "tf_server" {
   ]
 
   key_name        = var.key_name
-  user_data       = file(var.user_data)
+  # This file will be run after instance creation to update software.
+  user_data       = "user_data.sh"
 
   tags = {
     "Terraform" : "true"
