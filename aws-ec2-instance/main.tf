@@ -68,6 +68,7 @@ resource "aws_instance" "tf_server" {
   user_data       = "user_data.sh"
 
   tags = {
-    "Terraform" : "true"
+    Name = "tf-server"
+    Terraform = "true"
   }
 }
