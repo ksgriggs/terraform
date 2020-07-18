@@ -1,4 +1,5 @@
 variable "instance_type" {
+  description = "AWS instance type"
   type = string
 }
 
@@ -34,7 +35,7 @@ resource "aws_default_subnet" "default" {
 }
 
 resource "aws_security_group" "tf_sg" {
-  name        = "tf_sg"
+  name        = "tf-sg"
   description = "Allow SSH inbound and all outbound"
 
   ingress {
@@ -51,7 +52,7 @@ resource "aws_security_group" "tf_sg" {
   }
 
   tags = {
-    "Terraform" : "true"  
+    Terraform = "true"
   }
 }
 
