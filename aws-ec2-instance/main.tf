@@ -16,6 +16,7 @@ data "aws_ami" "search" {
   owners     = ["137112412989"] # Amazon
 }
 
+# Use default vpc
 data "aws_vpc" "default" {
   default = true
 }
