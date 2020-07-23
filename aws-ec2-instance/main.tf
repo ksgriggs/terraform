@@ -20,9 +20,8 @@ data "aws_vpc" "default" {
   default = true
 }
 
-# TODO Use data type
 # Use default subnet
-resource "aws_default_subnet" "default" {
+data "aws_subnet" "default" {
   availability_zone = "us-east-1a"
 }
 
