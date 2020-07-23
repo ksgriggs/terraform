@@ -1,14 +1,3 @@
-# TOOD Move to variables.tf
-variable "instance_type" {
-  description = "AWS instance type"
-  type        = string
-}
-
-variable "key_name" {
-  description = "Name of AWS key pair."
-  type        = string
-}
-
 provider "aws" {
   profile = "default"
   region  = "us-east-1"
@@ -27,9 +16,9 @@ data "aws_ami" "search" {
   owners     = ["137112412989"] # Amazon
 }
 
-# TODO Use data type
-# Use default VPC
-resource "aws_default_vpc" "default" {}
+data "aws_vpc" "default" {
+  default = true
+}
 
 # TODO Use data type
 # Use default subnet
