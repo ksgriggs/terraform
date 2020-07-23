@@ -1,3 +1,4 @@
+# TOOD Move to variables.tf
 variable "instance_type" {
   description = "AWS instance type"
   type        = string
@@ -26,9 +27,11 @@ data "aws_ami" "search" {
   owners     = ["137112412989"] # Amazon
 }
 
+# TODO Use data type
 # Use default VPC
 resource "aws_default_vpc" "default" {}
 
+# TODO Use data type
 # Use default subnet
 resource "aws_default_subnet" "default" {
   availability_zone = "us-east-1a"
@@ -55,6 +58,7 @@ resource "aws_security_group" "tf_sg" {
     Terraform = "true"
   }
 }
+
 
 resource "aws_instance" "tf_server" {
   ami             = data.aws_ami.search.id
