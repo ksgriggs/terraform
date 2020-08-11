@@ -1,13 +1,3 @@
-variable "instance_type" {
-  description = "AWS instance type"
-  type        = string
-}
-
-variable "key_name" {
-  description = "Name of AWS key pair."
-  type        = string
-}
-
 provider "aws" {
   profile = "default"
   region  = "us-east-1"
@@ -26,11 +16,13 @@ data "aws_ami" "search" {
   owners     = ["137112412989"] # Amazon
 }
 
-# Use default VPC
-resource "aws_default_vpc" "default" {}
+# Use default vpc
+data "aws_vpc" "default" {
+  default = true
+}
 
 # Use default subnet
-resource "aws_default_subnet" "default" {
+data "aws_subnet" "default" {
   availability_zone = "us-east-1a"
 }
 
@@ -55,6 +47,7 @@ resource "aws_security_group" "tf_sg" {
     Terraform = "true"
   }
 }
+
 
 resource "aws_instance" "tf_server" {
   ami             = data.aws_ami.search.id
