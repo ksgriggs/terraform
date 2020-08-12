@@ -8,5 +8,6 @@ VPC created with:
     1 Security group
     1 Internet gateway
 
-TODO:
-    Add private subnet.
+TODO
+----
+Add private subnet.
