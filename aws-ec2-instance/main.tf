@@ -10,7 +10,7 @@ data "aws_ami" "search" {
     name   = "virtualization-type"
     values = ["hvm"]
    }
- 
+
   # Use Amazon Linux 2 AMI (HVM) SSD Volume Type
   name_regex = "^amzn2-ami-hvm-.*x86_64-gp2"
   owners     = ["137112412989"] # Amazon
@@ -59,7 +59,7 @@ resource "aws_instance" "tf_server" {
 
   key_name        = var.key_name
   # This file will be run after instance creation to update software.
-  user_data       = "user_data.sh"
+  user_data       = file("user_data.sh")
 
   tags = {
     Name = "tf-server"
