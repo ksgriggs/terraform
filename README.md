@@ -1,4 +1,4 @@
-# terraform
+# terraform-aws
 A collection of Terraform configurations for AWS tasks.
 
 
